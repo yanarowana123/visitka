@@ -17,4 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', 'TestController@index');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+
+
+
+Route::get('/test', function () {
+    return view('admin.index');
+});
+
+
+require __DIR__.'/auth.php';

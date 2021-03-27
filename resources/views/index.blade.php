@@ -3,12 +3,6 @@
 
 @section('content')
 
-    @foreach($countries as $country)
-        <div class="d-flex">
-            <p>{{$country->title}}</p>
-            <p>{{$country->cities[0]->title}}</p>
-        </div>
-    @endforeach
     <div class="main">
         <header class="bg-img header">
             <nav class="navbar navbar-default navbar-vira">
