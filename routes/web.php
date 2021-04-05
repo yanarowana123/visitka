@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\admin\Block3Controller;
+use App\Http\Controllers\admin\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,18 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+    return view('index');
+})->middleware(['auth'])->name('index');
 
 
+Route::group(['prefix' => '/admin','middleware' => 'auth','name' => 'admin.'], function () {
+    Route::resource('/block3', Block3Controller::class);
+    Route::get('/', [HomeController::class,'index'])->name('home');
 
-
-Route::get('/test', function () {
-    return view('admin.index');
 });
 
 
