@@ -12,6 +12,8 @@ class Block3 extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function isActive()
     {
         return $this->is_active ? 'Да' : 'Нет';
@@ -19,7 +21,7 @@ class Block3 extends Model
 
     public function getImage()
     {
-        return $this->image ?? 'Нет';
+        return $this->image ?asset($this->image): 'Нет';
     }
 
 }

@@ -13,7 +13,7 @@ class Block3StoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,7 @@ class Block3StoreRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'description' => '',
-            'image' => '',
+            'image' => 'required|image',
             'is_active' => '',
             'sn' => 'required',
         ];

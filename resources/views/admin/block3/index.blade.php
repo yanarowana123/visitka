@@ -1,8 +1,9 @@
 @extends('layouts.admin.main')
-@section('title')Блок 3 @endsection
+@section('title','Block 3')
 @section('content')
 
     <table class="table table-striped table-bordered" id="datatable">
+        <a href="{{route('block3.create')}}" class="btn btn-success mb-2">Добавить</a>
         <thead>
         <tr>
             <td>Порядок</td>
@@ -16,9 +17,9 @@
         @forelse($items as $value)
             <tr>
                 <td>{{ $value->sn }}</td>
-                <td>{{ $value->name }}</td>
+                <td>{{ $value->title }}</td>
                 <td>{{ $value->description }}</td>
-                <td>{{ $value->getImage() }}</td>
+                <td><img src="{{ $value->getImage() }}" alt=""></td>
                 <td>{{ $value->isActive() }}</td>
             </tr>
         @empty
