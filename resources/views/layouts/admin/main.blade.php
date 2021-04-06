@@ -153,7 +153,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                     <i class="fas fa-th-large"></i>
                 </a>
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="{{route('logout')}}"  role="button">
+                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="{{route('logout')}}"
+                   role="button">
                     <i class="fa fa-sign-out-alt"></i>
                 </a>
             </li>
@@ -198,6 +199,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
+                @if(Session::has('success'))
+                    <div class="alert alert-success">
+                        {{Session::get('success')}}
+                    </div>
+                @endif
                 @yield('content')
             </div><!-- /.container-fluid -->
         </div>

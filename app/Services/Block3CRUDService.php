@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Interfaces\CrudInterface;
 use App\Models\Block3;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class Block3CRUDService implements CrudInterface
 {
@@ -21,9 +22,19 @@ class Block3CRUDService implements CrudInterface
         Block3::create($validatedRequest);
     }
 
-    public function update()
+    public function update($block3, array $validatedRequest)
     {
-        // TODO: Implement update() method.
+        if (array_key_exists('is_active', $validatedRequest)) {
+            $validatedRequest['is_active'] = 1;
+        } else {
+            $validatedRequest['is_active'] = 0;
+        }
+        if (array_key_exists('image', $validatedRequest)) {
+            Storage::delete($block3->image);
+            $imagePath = $this->uploadImage($validatedRequest['image']);
+            $validatedRequest['image'] = $imagePath;
+        }
+        $block3->update($validatedRequest);
     }
 
     public function delete()

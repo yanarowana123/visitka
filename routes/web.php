@@ -20,7 +20,7 @@ Route::get('/', function () {
 })->middleware(['auth'])->name('index');
 
 
-Route::group(['prefix' => '/admin','middleware' => 'auth','name' => 'admin.'], function () {
+Route::prefix('/admin')->middleware('auth')->name('admin.')->group( function () {
     Route::resource('/block3', Block3Controller::class);
     Route::get('/', [HomeController::class,'index'])->name('home');
 

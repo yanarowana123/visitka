@@ -21,7 +21,7 @@ class Block3 extends Model
 
     public function getImage()
     {
-        return $this->image ?asset($this->image): 'Нет';
+        return $this->image ? asset($this->image) : 'Нет';
     }
 
 }

@@ -23,12 +23,19 @@ class Block3StoreRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'title' => 'required|max:255',
             'description' => '',
-            'image' => 'required|image',
+            'image' => 'image',
             'is_active' => '',
             'sn' => 'required',
         ];
+
+        if ($this->isMethod('POST')) {
+            $rules['image'][] = 'required';
+        }
+
+        return $rules;
+
     }
 }
